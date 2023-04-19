@@ -25,45 +25,44 @@ import com.aiglesiasp.javamodc4.springrest.almacenes.services.CajaServiceImpl;
 @RestController
 @RequestMapping("/api")
 public class CajaController {
-	
+
 	@Autowired
 	CajaServiceImpl cajaServiceImpl;;
-	
+
 	@GetMapping("/cajas")
-	public List<Caja> listarCajas(){
+	public List<Caja> listarCajas() {
 		return cajaServiceImpl.listarCajas();
 	}
-	
+
 	@PostMapping("/cajas")
 	public Caja guardarCaja(@RequestBody Caja caja) {
 		return cajaServiceImpl.guardarCaja(caja);
 	}
-	
+
 	@GetMapping("/cajas/{numreferencia}")
-	public Caja cajaById(@PathVariable(name="numreferencia") String numreferencia) {
-		Caja caja= new Caja();
-		caja=cajaServiceImpl.cajaById(numreferencia);
-		System.out.println("Fabricante By ID: "+caja);
+	public Caja cajaById(@PathVariable(name = "numreferencia") String numreferencia) {
+		Caja caja = new Caja();
+		caja = cajaServiceImpl.cajaById(numreferencia);
+		System.out.println("Fabricante By ID: " + caja);
 		return caja;
 	}
-	
+
 	@PutMapping("/cajas/{numreferencia}")
-	public Caja actualizarCaja(@PathVariable(name="numreferencia")String numreferencia,@RequestBody Caja caja) {
-		
-		Caja caja_seleccionado= new Caja();
-		Caja caja_actualizado= new Caja();
-		caja_seleccionado= cajaServiceImpl.cajaById(numreferencia);
+	public Caja actualizarCaja(@PathVariable(name = "numreferencia") String numreferencia, @RequestBody Caja caja) {
+
+		Caja caja_seleccionado = new Caja();
+		Caja caja_actualizado = new Caja();
+		caja_seleccionado = cajaServiceImpl.cajaById(numreferencia);
 		caja_seleccionado.setContenido(caja.getContenido());
 		caja_seleccionado.setValor(caja.getValor());
 		caja_seleccionado.setAlmacen(caja.getAlmacen());
-		
-		
+
 		caja_actualizado = cajaServiceImpl.actualizarCaja(caja_seleccionado);
 		return caja_actualizado;
 	}
-	
+
 	@DeleteMapping("/cajas/{numreferencia}")
-	public void eliminarCaja(@PathVariable(name="numreferencia")String numreferencia) {
+	public void eliminarCaja(@PathVariable(name = "numreferencia") String numreferencia) {
 		cajaServiceImpl.eliminarCaja(numreferencia);
 	}
 

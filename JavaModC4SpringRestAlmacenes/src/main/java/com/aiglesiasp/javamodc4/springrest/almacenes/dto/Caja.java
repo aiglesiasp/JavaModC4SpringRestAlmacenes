@@ -15,25 +15,25 @@ import jakarta.persistence.Table;
  *
  */
 @Entity
-@Table(name="cajas")
+@Table(name = "cajas")
 public class Caja {
-	@Id @Column(name = "numreferencia")
+	@Id
+	@Column(name = "numreferencia")
 	private String numreferencia;
 	@Column(name = "contenido")
 	private String contenido;
 	@Column(name = "valor")
 	private int valor;
-	
+
 	@ManyToOne
-    @JoinColumn(name="almacen")
-    private Almacen almacen;
-	
-	
-	//CONTRUCTORES
+	@JoinColumn(name = "almacen")
+	private Almacen almacen;
+
+	// CONTRUCTORES
 	public Caja() {
-		
+
 	}
-	
+
 	public Caja(String numreferencia, String contenido, int valor, Almacen almacen) {
 		this.numreferencia = numreferencia;
 		this.contenido = contenido;
@@ -41,7 +41,7 @@ public class Caja {
 		this.almacen = almacen;
 	}
 
-	//GETTERS Y SETTERS
+	// GETTERS Y SETTERS
 	public String getNumreferencia() {
 		return numreferencia;
 	}
@@ -74,15 +74,11 @@ public class Caja {
 		this.almacen = almacen;
 	}
 
-	//TO STRING
+	// TO STRING
 	@Override
 	public String toString() {
 		return "Caja [numreferencia=" + numreferencia + ", contenido=" + contenido + ", valor=" + valor + ", almacen="
 				+ almacen + "]";
 	}
 
-	
-
-	
-	
 }

@@ -16,7 +16,7 @@ import com.aiglesiasp.javamodc4.springrest.almacenes.dto.Caja;
  *
  */
 @Service
-public class CajaServiceImpl implements ICajaService{
+public class CajaServiceImpl implements ICajaService {
 	@Autowired
 	ICajaDAO iCajaDAO;
 
@@ -43,7 +43,7 @@ public class CajaServiceImpl implements ICajaService{
 	@Override
 	public void eliminarCaja(String numreferencia) {
 		iCajaDAO.deleteById(numreferencia);
-		
+
 	}
 
 }

@@ -36,7 +36,7 @@ public class Almacen {
 	@OneToMany
 	@JoinColumn(name = "numreferencia")
 	private List<Caja> caja;
-	
+
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Caja")
 	public List<Caja> getCaja() {
@@ -47,13 +47,13 @@ public class Almacen {
 	public Almacen() {
 
 	}
-	
+
 	public Almacen(String lugar, int capacidad) {
 		this.lugar = lugar;
 		this.capacidad = capacidad;
 	}
 
-	//GETTERS Y SETTERS
+	// GETTERS Y SETTERS
 	public int getCodigo() {
 		return codigo;
 	}
@@ -78,14 +78,10 @@ public class Almacen {
 		this.capacidad = capacidad;
 	}
 
-	//TO STRING
+	// TO STRING
 	@Override
 	public String toString() {
 		return "Almacen [codigo=" + codigo + ", lugar=" + lugar + ", capacidad=" + capacidad + ", caja=" + caja + "]";
 	}
-
-	
-	
-	
 
 }
